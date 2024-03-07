@@ -4,7 +4,6 @@
     <div class="row">
         <div class="col-md-12">
             <form method="post">
-
             <?php
             $id =$_GET['id'];
             if(isset($_POST['submit'])) {
