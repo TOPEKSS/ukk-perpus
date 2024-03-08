@@ -72,11 +72,7 @@ if ($_SESSION['user']['level'] == 'petugas' || $_SESSION['user']['level'] == 'pe
             <i class="fas fa-book-open"></i>
             <span>Peminjaman</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="?page=koleksi">
-            <i class="fas fa-book-open"></i>
-            <span>Koleksi</span></a>
-    </li>
+   
 <?php
 }
 
@@ -88,6 +84,11 @@ if ($_SESSION['user']['level'] == 'peminjam') {
         <a class="nav-link" href="?page=ulasan">
             <i class="fas fa-comment"></i>
             <span>Ulasan</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="?page=koleksi">
+        <i class="fas fa-bookmark"></i>
+            <span>Koleksi</span></a>
     </li>
 <?php
 }

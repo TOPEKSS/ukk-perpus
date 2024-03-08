@@ -45,6 +45,20 @@
                             <div class="col-sm-8">
                                 <table class="table">
                                     <tbody>
+                                    <?php
+                                             // Pastikan sesi dimulai sebelum mengakses $_SESSION
+
+                                            // Periksa apakah ada pesan sukses dalam sesi
+                                            if (isset($_SESSION['success_message'])) {
+                                                // Tampilkan pesan sukses
+                                                echo '<div class="alert alert-success" role="alert">' . $_SESSION['success_message'] . '</div>';
+                                                // Hapus pesan sukses dari sesi agar tidak ditampilkan lagi
+                                                unset($_SESSION['success_message']);
+                                            }
+
+                                            // Lanjutkan dengan menampilkan konten koleksi seperti biasa
+                                            // ...
+                                        ?>
                                         <tr>
                                             <td>Id Buku</td>
                                             <td width="78%">: <?php echo $data['id_buku'];?></td>
@@ -120,23 +134,10 @@
                                     <tr>
                                         <td>
                                             <a href="?page=home" class="btn btn-danger col-md-3  ">Kembali</a>
-                                            <a href="?page=peminjaman_tambah" class="btn btn-primary col-md-3  ">Pinjam</a>
+                                            <a href="?page=peminjaman_tambah&id=<?php echo $id_buku; ?>" class="btn btn-primary col-md-3">Pinjam</a>
                                             <a href="?page=koleksi_tambah&id=<?php echo $data['id_buku']; ?>" class="btn btn-success col-md-3">Tambah ke Koleksi</a>
-
                                         </td>
-                                    </tr>
-                                    <?php
-                                       
 
-                                        // Periksa apakah ada pesan sukses dalam session
-                                        if (isset($_SESSION['success_message'])) {
-                                            // Tampilkan pesan sukses
-                                            echo '<div class="alert alert-success" role="alert">' . $_SESSION['success_message'] . '</div>';
-                                            
-                                            // Hapus pesan sukses dari session agar tidak ditampilkan lagi
-                                            unset($_SESSION['success_message']);
-                                        }
-                                        ?>
 
                                         <!-- Sisipkan bagian informasi buku lainnya di sini -->
                                     </tbody>

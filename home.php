@@ -104,16 +104,11 @@
                 }
                 ?>
                    <div class="card col-xl-12 col-md-6 mb-4" style=" background-color: rgba(255, 255, 255, 0.5);">
-    <div class="card-body">
-        <h2 class="mt-4 text-center">Selamat Datang, <span style="color: #8eb30b;"><?php echo $_SESSION['user']['nama'];?></span><br> Perpustakaan Digital XII RPL 2 </h2>
-        <div class="div text-right">Login pada : <?php echo date('d-m-Y'); ?></div>
-    </div>
-</div>
-
-
-
-
-
+                        <div class="card-body">
+                            <h2 class="mt-4 text-center">Selamat Datang, <span style="color: #8eb30b;"><?php echo $_SESSION['user']['nama'];?></span><br> Perpustakaan Digital XII RPL 2 </h2>
+                            <div class="div text-right">Login pada : <?php echo date('d-m-Y'); ?></div>
+                        </div>
+                    </div>
                      <div class="card col-xl-12 col-md-6 mb-4">
                         <div class="card-body">
                             <h2 class="mt-4">Daftar buku :</h2>
