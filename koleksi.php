@@ -10,7 +10,7 @@
 
 <div class="card col-xl-12 col-md-6 mb-4">
     <div class="card-body">
-        <h2 class="mt-4">Daftar Buku Koleksi Anda :</h2>
+        <h2 class="mt-4">Koleksi Anda :</h2>
         <hr>
         <?php
             // Pastikan sesi dimulai sebelum mengakses $_SESSION
