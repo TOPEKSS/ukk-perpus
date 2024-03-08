@@ -13,22 +13,23 @@
         <h2 class="mt-4">Koleksi Anda :</h2>
         <hr>
         <?php
-            // Pastikan sesi dimulai sebelum mengakses $_SESSION
+    // Pastikan sesi dimulai sebelum mengakses $_SESSION
 
-            // Tampilkan pesan sukses jika ada
-            if (isset($_SESSION['success_message'])) {
-                echo '<div class="alert alert-success" role="alert">' . $_SESSION['success_message'] . '</div>';
-                unset($_SESSION['success_message']); // Hapus pesan sukses dari session agar tidak ditampilkan lagi
-            }
+    // Tampilkan pesan sukses jika ada
+    if (isset($_SESSION['success_message'])) {
+        echo '<div class="alert alert-success" role="alert">' . $_SESSION['success_message'] . '</div>';
+        // Hapus pesan sukses dari session agar tidak ditampilkan lagi
+        unset($_SESSION['success_message']);
+    }
 
-            // Tampilkan pesan error jika ada
-            if (isset($_SESSION['error_message'])) {
-                echo '<div class="alert alert-danger" role="alert">' . $_SESSION['error_message'] . '</div>';
-                unset($_SESSION['error_message']); // Hapus pesan error dari session agar tidak ditampilkan lagi
-            }
+    // Tampilkan pesan error jika ada
+    if (isset($_SESSION['error_message'])) {
+        echo '<div class="alert alert-danger" role="alert">' . $_SESSION['error_message'] . '</div>';
+        // Hapus pesan error dari session agar tidak ditampilkan lagi
+        unset($_SESSION['error_message']);
+    }
+?>
 
-            // Lanjutkan dengan kode lainnya...
-        ?>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
             <?php

@@ -13,6 +13,17 @@
         exit; // Berhenti eksekusi karena tidak ada ID buku atau ID pengguna yang valid
     }
 
+    // Periksa apakah buku sudah ada dalam koleksi pengguna berdasarkan ID bukunya
+    $query_check_collection = "SELECT * FROM koleksi WHERE id_user = '$id_user' AND id_buku = '$id_buku'";
+    $result_check_collection = mysqli_query($koneksi, $query_check_collection);
+
+    // Jika buku sudah ada dalam koleksi pengguna, tampilkan pesan
+    if (mysqli_num_rows($result_check_collection) > 0) {
+        $_SESSION['error_message'] = "Buku sudah ada dalam koleksi Anda.";
+        header("Location: ?page=koleksi");
+        exit; // Berhenti eksekusi karena buku sudah ada dalam koleksi
+    }
+
     // Mendapatkan tanggal dan jam saat ini
     $tanggal_ditambahkan = date('Y-m-d');
 

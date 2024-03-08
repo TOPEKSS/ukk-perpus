@@ -1,18 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    
+    
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+</head>
+<body>
 <?php
 include('koneksi.php');
 
-$keyword = $_GET['keyword'];
+// Periksa apakah parameter 'keyword' telah diset sebelum mengaksesnya
+$keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 
-$query = mysqli_query($koneksi, "SELECT * FROM buku LEFT JOIN kategori ON buku.id_kategori = kategori.id_kategori LEFT JOIN ulasan ON buku.id_buku = ulasan.id_buku WHERE judul='$keyword'");
+// Periksa apakah keyword tidak kosong
+if (!empty($keyword)) {
+    $query = mysqli_query($koneksi, "SELECT * FROM buku LEFT JOIN kategori ON buku.id_kategori = kategori.id_kategori LEFT JOIN ulasan ON buku.id_buku = ulasan.id_buku WHERE judul='$keyword'");
 
-// Periksa apakah query berhasil dijalankan
-if ($query) {
-    // Menggunakan mysqli_fetch_assoc() untuk mengambil satu baris hasil query
-    $data = mysqli_fetch_assoc($query);
+    // Periksa apakah query berhasil dijalankan
+    if ($query) {
+        // Menggunakan mysqli_fetch_assoc() untuk mengambil satu baris hasil query
+        $data = mysqli_fetch_assoc($query);
 
-    if ($data) {
+        if ($data) {
 ?>
-<h1 class="mt-4">Cari Buku</h1>
+<h1 class="mt-4 text-center">Cari Buku</h1>
 
 <div class="card">
     <div class="card-body">
@@ -78,7 +94,7 @@ if ($query) {
                                 </tr>
                                 <!-- <tr>
                                     <td>
-                                        <a href="home.php" class="btn btn-danger">Kembali</a> 
+                                        <a href="?page=home" class="btn btn-danger">Kembali</a> 
                                     </td>
                                     </td>
                                 </tr> -->
@@ -98,10 +114,20 @@ if ($query) {
     </div>
 </div>
 <?php
+        } else {
+            echo "Buku tidak ditemukan.";
+        }
     } else {
-        echo "Buku tidak ditemukan.";
+        echo "Error: " . mysqli_error($koneksi);
     }
 } else {
-    echo "Error: " . mysqli_error($koneksi);
+    // Jika parameter 'keyword' tidak diset, tampilkan pesan bahwa pencarian tidak valid
+    echo "Pencarian tidak valid. Mohon masukkan kata kunci pencarian.";
 }
 ?>
+
+
+</body>
+</html>
+
+
